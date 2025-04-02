@@ -9,9 +9,10 @@ app.use(express.json());
 
 // Simulated issues
 const issues = [
-  { id: 1, os: 'Windows', description: 'OS crashed - Blue Screen of Death', steps: ['Restart PC', 'Update drivers', 'Run system diagnostics'] },
-  { id: 2, os: 'Mac', description: 'Printer not responding', steps: ['Check printer connection', 'Restart printer', 'Reinstall driver'] },
-  { id: 3, os: 'iOS', description: 'Network drop on iPad', steps: ['Toggle Wi-Fi', 'Restart device', 'Reset network settings'] },
+  { id: 1, os: 'Windows', description: 'OS crashed - Blue Screen of Death', steps: ['Restart PC', 'Update drivers', 'Run system diagnostics'], severity: 'critical' },
+  { id: 2, os: 'Mac', description: 'Printer not responding', steps: ['Check printer connection', 'Restart printer', 'Reinstall driver'], severity: 'medium' },
+  { id: 3, os: 'iOS', description: 'Network drop on iPad', steps: ['Toggle Wi-Fi', 'Restart device', 'Reset network settings'], severity: 'low' },
+  { id: 4, os: 'Windows', description: 'Azure VDI login failure', steps: ['Check credentials', 'Verify VPN', 'Contact IT admin'], severity: 'high' },
 ];
 
 // JSON file to store analytics

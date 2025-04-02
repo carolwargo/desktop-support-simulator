@@ -62,6 +62,7 @@ function App() {
           <div>
             <p><strong>OS:</strong> {issue.os}</p>
             <p><strong>Issue:</strong> {issue.description}</p>
+            <p><strong>Severity:</strong> {issue.severity}</p> {/* Added here */}
             <p><strong>Step {stepIndex + 1}:</strong> {issue.steps[stepIndex]}</p>
             <button onClick={nextStep}>
               {stepIndex === issue.steps.length - 1 ? 'Resolve' : 'Next Step'}
