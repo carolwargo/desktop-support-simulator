@@ -7,7 +7,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Simulated issues
 const issues = [
   { id: 1, os: 'Windows', description: 'OS crashed - Blue Screen of Death', steps: ['Restart PC', 'Update drivers', 'Run system diagnostics'], severity: 'critical' },
   { id: 2, os: 'Mac', description: 'Printer not responding', steps: ['Check printer connection', 'Restart printer', 'Reinstall driver'], severity: 'medium' },
@@ -15,28 +14,24 @@ const issues = [
   { id: 4, os: 'Windows', description: 'Azure VDI login failure', steps: ['Check credentials', 'Verify VPN', 'Contact IT admin'], severity: 'high' },
 ];
 
-// JSON file to store analytics
 const analyticsFile = path.join(__dirname, 'analytics.json');
 if (!fs.existsSync(analyticsFile)) {
   fs.writeFileSync(analyticsFile, JSON.stringify([]));
 }
 
-// Get random issue
 app.get('/api/issue', (req, res) => {
   const randomIssue = issues[Math.floor(Math.random() * issues.length)];
   res.json(randomIssue);
 });
 
-// Log resolution
 app.post('/api/resolve', (req, res) => {
-  const { issueId, resolutionTime } = req.body;
+  const { issueId, resolutionTime, stepTimes } = req.body; // Add stepTimes
   const analytics = JSON.parse(fs.readFileSync(analyticsFile));
-  analytics.push({ issueId, resolutionTime, timestamp: new Date() });
+  analytics.push({ issueId, resolutionTime, stepTimes, timestamp: new Date() });
   fs.writeFileSync(analyticsFile, JSON.stringify(analytics));
   res.sendStatus(200);
 });
 
-// Get analytics
 app.get('/api/analytics', (req, res) => {
   const analytics = JSON.parse(fs.readFileSync(analyticsFile));
   res.json(analytics);
