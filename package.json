@@ -1,21 +1,18 @@
 {
   "name": "desktop-support-simulator",
+  "homepage": "https://github.com/carolwargo/desktop-support-simulator",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd backend && npm start",
+    "client": "cd frontend && npm run dev",
+    "install-all": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "build": "cd frontend && npm run build",
+    "deploy-gh": "cd frontend && npm run build && gh-pages -d dist"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/carolwargo/desktop-support-simulator.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/carolwargo/desktop-support-simulator/issues"
-  },
-  "homepage": "https://github.com/carolwargo/desktop-support-simulator#readme"
+ 
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
 }
