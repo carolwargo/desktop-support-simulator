@@ -39,3 +39,11 @@ ul {
 li {
   margin: 10px 0;
 }
+.severity-critical { color: red; }
+.severity-medium { color: orange; }
+.severity-low { color: green; }
+
+canvas {
+  max-width: 100%;
+  height: auto;
+}
