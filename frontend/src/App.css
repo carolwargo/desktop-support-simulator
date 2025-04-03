@@ -1,21 +1,107 @@
 * {
   box-sizing: border-box;
-  justify-content: center;
-} 
+  justify-content: center; /* Centers the dashboard container */
+  background-color: #d9e8fb;
+}
 
 .App {
+
   text-align: center;
   font-family: Arial, sans-serif;
-  max-width: 800px;
-  margin: 0 auto;
+  max-width: 1200px; /* Keeps the width constraint */
+  margin: 0 auto; /* Centers the container horizontally */
   padding: 20px;
+  background-color: #d9e8fb; /* New background color for the entire dashboard (soft blue example) */
+  min-height: 100vh; /* Ensures background fills the viewport */
+  display: grid; /* Use Grid for layout */
+  grid-template-columns: 1fr; /* Single column for stacking sections */
+  gap: 20px; /* Space between sections */
+  justify-content: center; /* Centers grid content horizontally */
 }
 
 .section {
-  margin: 20px 0;
+  margin: 0; /* Remove margin since grid gap handles spacing */
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  background-color: #fff; /* Keeps sections white */
+  width: 100%; /* Full width within grid */
+  max-width: 1200px; /* Optional: Limits section width */
+  justify-self: center; /* Centers each section within the grid */
+}
+
+.section h2,
+.section label {
+  background-color: transparent; /* Ensures headers/labels don’t inherit background */
+}
+
+/* Dashboard Container Styles */
+.dashboard-container {
+
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  gap: 20px; /* Space between columns */
+  width: 100%; /* Full width within grid */
+  max-width: 1200px; /* Matches .App max-width */
+}
+
+.dashboard-section {
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff; /* Keeps dashboard sections white */
+}
+
+.dashboard-section h2 {
+  background-color: transparent; /* Ensures headers don’t inherit background */
+}
+
+.issue-details {
+display: block;
+padding: 2rem;
+
+} 
+
+.manual-steps {
+  background-color: #f9f9f9;
+  padding: 5px 20px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+.manual-steps ul {
+  list-style: none;
+  padding: 0;
+  text-align: left;
+  background-color: #edf4fc;
+
+}
+
+.manual-steps title {
+  font-size: 1.5rem;
+ background-color: #edf4fc;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+} 
+
+.manual-steps li {
+  margin: 10px 0;
+  background-color: #edf4fc;
+}
+
+.manual-steps .active-step {
+  font-weight: bold;
+  color: #007bff; /* Highlight the current step */
+}
+
+.guided-steps {
+  text-align: center;
+}
+
+.issue-controls {
+ background-color: #fff;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
 button {
@@ -25,6 +111,8 @@ button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  margin-bottom: 10px;
+  margin-top: 1rem;
 }
 
 button:hover {
@@ -34,10 +122,13 @@ button:hover {
 ul {
   list-style: none;
   padding: 0;
+  background-color: white ;
 }
 
 li {
   margin: 10px 0;
+  background-color: white;
+  font-size: small;
 }
 
 .success {
@@ -46,4 +137,17 @@ li {
 
 .error {
   color: red;
+}
+
+/* Optional: Ensure chart fits within column */
+canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Responsive adjustment */
+@media (max-width: 768px) {
+  .dashboard-container {
+    grid-template-columns: 1fr; /* Stack columns on smaller screens */
+  }
 }

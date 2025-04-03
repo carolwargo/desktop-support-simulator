@@ -25,7 +25,7 @@ app.get('/api/issue', (req, res) => {
 });
 
 app.post('/api/resolve', (req, res) => {
-  const { issueId, resolutionTime, stepTimes } = req.body; // Add stepTimes
+  const { issueId, resolutionTime, stepTimes } = req.body; // Updated to match frontend
   const analytics = JSON.parse(fs.readFileSync(analyticsFile));
   analytics.push({ issueId, resolutionTime, stepTimes, timestamp: new Date() });
   fs.writeFileSync(analyticsFile, JSON.stringify(analytics));
