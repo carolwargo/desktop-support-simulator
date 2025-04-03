@@ -3,6 +3,8 @@ import './App.css';
 import { Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLightbulb } from "@fortawesome/free-solid-svg-icons";
 import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
   const [issue, setIssue] = useState(null);
@@ -99,8 +101,11 @@ function App() {
          <span className='mb-1 bg-white'> Guided Mode</span> 
         </label>
    </div>
-   <span> <i className=' '></i><p className='py-3 bg-secondary-subtle'>  Guided mode provides a step-by-step process to help users quickly identify and fix issues.</p></span>
-     
+   <span> 
+   <p className="p-3 bg-secondary-subtle small text-muted">
+  <FontAwesomeIcon icon={faLightbulb} style={{ color: " darkRed" }} />  Select 'Guided Mode' above for a step-by-step approach to identifying and resolving issues.
+</p>
+</span>
         {!issue ? (
           <button onClick={fetchIssue}>Generate New Issue</button>
         ) : (
